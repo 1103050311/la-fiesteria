@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +18,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // 1. Usuario administrador por defecto
+        User::firstOrCreate(
+            ['email' => 'admin@lafiesteria.com'],
+            [
+                'name'     => 'Administrador',
+                'email'    => 'admin@lafiesteria.com',
+                'password' => Hash::make('password'),
+            ]
+        );
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // 2. Catálogos base (sin dependencias)
+        $this->call([
+            CatalogoSeeder::class,
+            CategoriaSeeder::class,
         ]);
+
+        // 3. Datos de prueba (solo en entornos no productivos)
+        if (! app()->isProduction()) {
+            $this->call([
+                ClienteSeeder::class,
+            ]);
+        }
     }
 }
