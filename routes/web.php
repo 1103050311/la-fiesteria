@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Teams\TeamInvitationController;
 use App\Http\Middleware\EnsureTeamMembership;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InventarioController;
 
 Route::inertia('/', 'welcome')->name('home');
 
@@ -11,6 +12,7 @@ Route::prefix('{current_team}')
     ->middleware(['auth', 'verified', EnsureTeamMembership::class])
     ->group(function () {
         Route::get('dashboard', DashboardController::class)->name('dashboard');
+        Route::get('inventario', InventarioController::class)->name('inventario');
     });
 
 Route::middleware(['auth'])->group(function () {
@@ -18,4 +20,4 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('invitations/{invitation}', [TeamInvitationController::class, 'decline'])->name('invitations.decline');
 });
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';

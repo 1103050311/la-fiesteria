@@ -42,12 +42,14 @@ class User extends Authenticatable implements PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens,
-        HasFactory,
-        HasRoles,
-        HasTeams,
-        Notifiable,
-        PasskeyAuthenticatable,
-        TwoFactorAuthenticatable;
+    HasFactory,
+    HasRoles,
+    HasTeams,
+    Notifiable,
+    PasskeyAuthenticatable,
+    TwoFactorAuthenticatable {
+        HasTeams::teams insteadof HasRoles;
+    }
 
     /**
      * Get the attributes that should be cast.

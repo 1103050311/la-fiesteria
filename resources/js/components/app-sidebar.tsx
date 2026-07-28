@@ -1,7 +1,15 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import {
+    Archive,
+    BarChart,
+    CalendarDays,
+    ClipboardList,
+    Image,
+    LayoutGrid,
+    Tag,
+    Box,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
-import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { TeamSwitcher } from '@/components/team-switcher';
@@ -29,18 +37,40 @@ export function AppSidebar() {
             href: dashboardUrl,
             icon: LayoutGrid,
         },
-    ];
-
-    const footerNavItems: NavItem[] = [
         {
-            title: 'Repository',
-            href: 'https://github.com/laravel/react-starter-kit',
-            icon: FolderGit2,
+            title: 'Inventario',
+            href: '/inventario',
+            icon: Archive,
         },
         {
-            title: 'Documentation',
-            href: 'https://laravel.com/docs/starter-kits#react',
-            icon: BookOpen,
+            title: 'Productos',
+            href: '/Productos',
+            icon: Box,
+        },
+        {
+            title: 'Categorias',
+            href: '/Categorias',
+            icon: Tag,
+        },
+        {
+            title: 'Solicitudes',
+            href: '/Solicitudes',
+            icon: ClipboardList,
+        },
+        {
+            title: 'Reservas',
+            href: '/Reservas',
+            icon: CalendarDays,
+        },
+        {
+            title: 'Galeria',
+            href: '/Galeria',
+            icon: Image,
+        },
+        {
+            title: 'Reportes',
+            href: '/Reportes',
+            icon: BarChart,
         },
     ];
 
@@ -68,7 +98,6 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter>
-                <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
             </SidebarFooter>
         </Sidebar>
