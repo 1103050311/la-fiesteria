@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Inertia\Inertia;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-class InventarioController extends Controller
+class ProductosController extends Controller
 {
     public function invoke()
     {
-        return Inertia::render('inventario');
+        return Inertia::render('productos');
     }
 }
