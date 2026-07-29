@@ -27,9 +27,18 @@ import type { NavItem } from '@/types';
 
 export function AppSidebar() {
     const page = usePage();
+    const teamBaseUrl = page.props.currentTeam ? `/${page.props.currentTeam.slug}` : '';
     const dashboardUrl = page.props.currentTeam
         ? dashboard(page.props.currentTeam.slug)
         : '/';
+    const inventarioUrl = teamBaseUrl ? `${teamBaseUrl}/inventario` : '/';
+    const productosUrl = teamBaseUrl ? `${teamBaseUrl}/productos` : '/';
+    const categoriasUrl = teamBaseUrl ? `${teamBaseUrl}/categorias` : '/';
+    const solicitudesUrl = teamBaseUrl ? `${teamBaseUrl}/solicitudes` : '/';
+    const reservasUrl = teamBaseUrl ? `${teamBaseUrl}/reservas` : '/';
+    const galeriaUrl = teamBaseUrl ? `${teamBaseUrl}/galeria` : '/';
+    const reportesUrl = teamBaseUrl ? `${teamBaseUrl}/reportes` : '/';
+
 
     const mainNavItems: NavItem[] = [
         {
@@ -39,37 +48,37 @@ export function AppSidebar() {
         },
         {
             title: 'Inventario',
-            href: '/inventario',
+            href: inventarioUrl,
             icon: Archive,
         },
         {
             title: 'Productos',
-            href: '/Productos',
+            href: productosUrl,
             icon: Box,
         },
         {
             title: 'Categorias',
-            href: '/Categorias',
+            href: categoriasUrl,
             icon: Tag,
         },
         {
             title: 'Solicitudes',
-            href: '/Solicitudes',
+            href: solicitudesUrl,
             icon: ClipboardList,
         },
         {
             title: 'Reservas',
-            href: '/Reservas',
+            href: reservasUrl,
             icon: CalendarDays,
         },
         {
             title: 'Galeria',
-            href: '/Galeria',
+            href: galeriaUrl,
             icon: Image,
         },
         {
             title: 'Reportes',
-            href: '/Reportes',
+            href: reportesUrl,
             icon: BarChart,
         },
     ];
