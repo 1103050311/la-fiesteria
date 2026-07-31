@@ -20,6 +20,8 @@ class Inventario extends Model
     protected $fillable = [
         'producto_id',
         'estado_inventario_id',
+        'piezasDisponibles',
+        'piezasTotales',
         'numero_serie',
         'codigo_interno',
         'ubicacion',
@@ -33,9 +35,9 @@ class Inventario extends Model
     {
         return [
             'fecha_compra' => 'date',
-            'created_at'   => 'datetime',
-            'updated_at'   => 'datetime',
-            'deleted_at'   => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
         ];
     }
 
