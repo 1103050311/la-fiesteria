@@ -11,9 +11,15 @@ use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\GaleriaController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\WhatsappController;
 
 Route::inertia('/', 'welcome')->name('home');
 
+//Client routes
+Route::post('whatsapp/enviar', [WhatsappController::class, 'enviar'])->name('whatsapp.enviar');
+
+
+//admin routes
 Route::prefix('{current_team}')
     ->middleware(['auth', 'verified', EnsureTeamMembership::class])
     ->group(function () {
@@ -25,6 +31,7 @@ Route::prefix('{current_team}')
         Route::get('reservas', [ReservasController::class, 'invoke'])->name('reservas');
         Route::get('galeria', [GaleriaController::class, 'invoke'])->name('galeria');
         Route::get('reportes', [ReportesController::class, 'invoke'])->name('reportes');
+
     });
 
 Route::middleware(['auth'])->group(function () {
